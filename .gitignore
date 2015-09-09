@@ -1,2 +1,5 @@
 .idea/
 node_modules/
+.openshift/
+README.md
+deplist.txt
