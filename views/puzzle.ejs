@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="shortcut icon" href="../pictures/favicon.ico" type="image/x-icon" />
+    <script>var P = <%- script %>; P.solve = <%- solve %>;</script>
+    <script defer src="../script/script.js"></script>
+</head>
+<body>
+    <% if (!solve) { %><input id="range" class="range" type="range" min="1" max="7" step="1" value="7" /><% } %>
+    <% if (left) { %> <a class="nav left" href="<%= left.href %>"></a> <% } %>
+    <div class="puzzle" data-type="<%- type %>">
+        <div class="xRules">
+            <div class="rule rule0 p0"><%- rule %></div>
+            <div class="rule rule1 p1"><%- rule %></div>
+            <div class="rule rule2 p2"><%- rule %></div>
+            <div class="rule rule3 p3"><%- rule %></div>
+            <div class="rule rule4 p4"><%- rule %></div>
+            <div class="rule rule5 p5"><%- rule %></div>
+            <div class="rule rule6 p6"><%- rule %></div>
+            <div class="rule rule7 p7"><%- rule %></div>
+            <div class="rule rule8 p8"><%- rule %></div>
+            <div class="rule rule9 p9"><%- rule %></div>
+            <div class="rule rule10 p10"><%- rule %></div>
+            <div class="rule rule11 p11"><%- rule %></div>
+            <div class="rule rule12 p12"><%- rule %></div>
+        </div>
+        <div class="yRules">
+            <div class="rule rule0 p0"><%- rule %></div>
+            <div class="rule rule1 p1"><%- rule %></div>
+            <div class="rule rule2 p2"><%- rule %></div>
+            <div class="rule rule3 p3"><%- rule %></div>
+            <div class="rule rule4 p4"><%- rule %></div>
+            <div class="rule rule5 p5"><%- rule %></div>
+            <div class="rule rule6 p6"><%- rule %></div>
+            <div class="rule rule7 p7"><%- rule %></div>
+            <div class="rule rule8 p8"><%- rule %></div>
+            <div class="rule rule9 p9"><%- rule %></div>
+            <div class="rule rule10 p10"><%- rule %></div>
+            <div class="rule rule11 p11"><%- rule %></div>
+            <div class="rule rule12 p12"><%- rule %></div>
+        </div>
+        <div class="hex">
+            <div class="line p0">
+                <div class="cell p0 p6" data-x="0" data-y="0" data-z="6"><input maxlength="1" /></div><div class="cell p1 p0 p7" data-x="1" data-y="0" data-z="7"><input maxlength="1" /></div><div class="cell p2 p0 p8" data-x="2" data-y="0" data-z="8"><input maxlength="1" /></div><div class="cell p3 p0 p9" data-x="3" data-y="0" data-z="9"><input maxlength="1" /></div><div class="cell p4 p0 p10" data-x="4" data-y="0" data-z="10"><input maxlength="1" /></div><div class="cell p5 p0 p11" data-x="5" data-y="0" data-z="11"><input maxlength="1" /></div><div class="cell p6 p0 p12" data-x="6" data-y="0" data-z="12"><input maxlength="1" /></div>
+            </div>
+            <div class="line p1">
+                <div class="cell p0 p1 p5" data-x="0" data-y="1" data-z="5"><input maxlength="1" /></div><div class="cell p1 p6" data-x="1" data-y="1" data-z="6"><input maxlength="1" /></div><div class="cell p2 p1 p7" data-x="2" data-y="1" data-z="7"><input maxlength="1" /></div><div class="cell p3 p1 p8" data-x="3" data-y="1" data-z="8"><input maxlength="1" /></div><div class="cell p4 p1 p9" data-x="4" data-y="1" data-z="9"><input maxlength="1" /></div><div class="cell p5 p1 p10" data-x="5" data-y="1" data-z="10"><input maxlength="1" /></div><div class="cell p6 p1 p11" data-x="6" data-y="1" data-z="11"><input maxlength="1" /></div><div class="cell p7 p1 p12" data-x="7" data-y="1" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p2">
+                <div class="cell p0 p2 p4" data-x="0" data-y="2" data-z="4"><input maxlength="1" /></div><div class="cell p1 p2 p5" data-x="1" data-y="2" data-z="5"><input maxlength="1" /></div><div class="cell p2 p6" data-x="2" data-y="2" data-z="6"><input maxlength="1" /></div><div class="cell p3 p2 p7" data-x="3" data-y="2" data-z="7"><input maxlength="1" /></div><div class="cell p4 p2 p8" data-x="4" data-y="2" data-z="8"><input maxlength="1" /></div><div class="cell p5 p2 p9" data-x="5" data-y="2" data-z="9"><input maxlength="1" /></div><div class="cell p6 p2 p10" data-x="6" data-y="2" data-z="10"><input maxlength="1" /></div><div class="cell p7 p2 p11" data-x="7" data-y="2" data-z="11"><input maxlength="1" /></div><div class="cell p8 p2 p12" data-x="8" data-y="2" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p3">
+                <div class="cell p0 p3" data-x="0" data-y="3" data-z="3"><input maxlength="1" /></div><div class="cell p1 p3 p4" data-x="1" data-y="3" data-z="4"><input maxlength="1" /></div><div class="cell p2 p3 p5" data-x="2" data-y="3" data-z="5"><input maxlength="1" /></div><div class="cell p3 p6" data-x="3" data-y="3" data-z="6"><input maxlength="1" /></div><div class="cell p4 p3 p7" data-x="4" data-y="3" data-z="7"><input maxlength="1" /></div><div class="cell p5 p3 p8" data-x="5" data-y="3" data-z="8"><input maxlength="1" /></div><div class="cell p6 p3 p9" data-x="6" data-y="3" data-z="9"><input maxlength="1" /></div><div class="cell p7 p3 p10" data-x="7" data-y="3" data-z="10"><input maxlength="1" /></div><div class="cell p8 p3 p11" data-x="8" data-y="3" data-z="11"><input maxlength="1" /></div><div class="cell p9 p3 p12" data-x="9" data-y="3" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p4">
+                <div class="cell p0 p4 p2" data-x="0" data-y="4" data-z="2"><input maxlength="1" /></div><div class="cell p1 p4 p3" data-x="1" data-y="4" data-z="3"><input maxlength="1" /></div><div class="cell p2 p4" data-x="2" data-y="4" data-z="4"><input maxlength="1" /></div><div class="cell p3 p4 p5" data-x="3" data-y="4" data-z="5"><input maxlength="1" /></div><div class="cell p4 p6" data-x="4" data-y="4" data-z="6"><input maxlength="1" /></div><div class="cell p5 p4 p7" data-x="5" data-y="4" data-z="7"><input maxlength="1" /></div><div class="cell p6 p4 p8" data-x="6" data-y="4" data-z="8"><input maxlength="1" /></div><div class="cell p7 p4 p9" data-x="7" data-y="4" data-z="9"><input maxlength="1" /></div><div class="cell p8 p4 p10" data-x="8" data-y="4" data-z="10"><input maxlength="1" /></div><div class="cell p9 p4 p11" data-x="9" data-y="4" data-z="11"><input maxlength="1" /></div><div class="cell p10 p4 p12" data-x="10" data-y="4" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p5">
+                <div class="cell p0 p5 p1" data-x="0" data-y="5" data-z="1"><input maxlength="1" /></div><div class="cell p1 p5 p2" data-x="1" data-y="5" data-z="2"><input maxlength="1" /></div><div class="cell p2 p5 p3" data-x="2" data-y="5" data-z="3"><input maxlength="1" /></div><div class="cell p3 p5 p4" data-x="3" data-y="5" data-z="4"><input maxlength="1" /></div><div class="cell p4 p5" data-x="4" data-y="5" data-z="5"><input maxlength="1" /></div><div class="cell p5 p6" data-x="5" data-y="5" data-z="6"><input maxlength="1" /></div><div class="cell p6 p5 p7" data-x="6" data-y="5" data-z="7"><input maxlength="1" /></div><div class="cell p7 p5 p8" data-x="7" data-y="5" data-z="8"><input maxlength="1" /></div><div class="cell p8 p5 p9" data-x="8" data-y="5" data-z="9"><input maxlength="1" /></div><div class="cell p9 p5 p10" data-x="9" data-y="5" data-z="10"><input maxlength="1" /></div><div class="cell p10 p5 p11" data-x="10" data-y="5" data-z="11"><input maxlength="1" /></div><div class="cell p11 p5 p12" data-x="11" data-y="5" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p6">
+                <div class="cell p0 p6 p0" data-x="0" data-y="6" data-z="0"><input maxlength="1" /></div><div class="cell p1 p6 p1" data-x="1" data-y="6" data-z="1"><input maxlength="1" /></div><div class="cell p2 p6 p2" data-x="2" data-y="6" data-z="2"><input maxlength="1" /></div><div class="cell p3 p6 p3" data-x="3" data-y="6" data-z="3"><input maxlength="1" /></div><div class="cell p4 p6 p4" data-x="4" data-y="6" data-z="4"><input maxlength="1" /></div><div class="cell p5 p6 p5" data-x="5" data-y="6" data-z="5"><input maxlength="1" /></div><div class="cell p6" data-x="6" data-y="6" data-z="6"><input maxlength="1" /></div><div class="cell p7 p6 p7" data-x="7" data-y="6" data-z="7"><input maxlength="1" /></div><div class="cell p8 p6 p8" data-x="8" data-y="6" data-z="8"><input maxlength="1" /></div><div class="cell p9 p6 p9" data-x="9" data-y="6" data-z="9"><input maxlength="1" /></div><div class="cell p10 p6 p10" data-x="10" data-y="6" data-z="10"><input maxlength="1" /></div><div class="cell p11 p6 p11" data-x="11" data-y="6" data-z="11"><input maxlength="1" /></div><div class="cell p12 p6 p12" data-x="12" data-y="6" data-z="12"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p7">
+                <div class="cell p1 p7 p0" data-x="1" data-y="7" data-z="0"><input maxlength="1" /></div><div class="cell p2 p7 p1" data-x="2" data-y="7" data-z="1"><input maxlength="1" /></div><div class="cell p3 p7 p2" data-x="3" data-y="7" data-z="2"><input maxlength="1" /></div><div class="cell p4 p7 p3" data-x="4" data-y="7" data-z="3"><input maxlength="1" /></div><div class="cell p5 p7 p4" data-x="5" data-y="7" data-z="4"><input maxlength="1" /></div><div class="cell p6 p7 p5" data-x="6" data-y="7" data-z="5"><input maxlength="1" /></div><div class="cell p7 p6" data-x="7" data-y="7" data-z="6"><input maxlength="1" /></div><div class="cell p8 p7" data-x="8" data-y="7" data-z="7"><input maxlength="1" /></div><div class="cell p9 p7 p8" data-x="9" data-y="7" data-z="8"><input maxlength="1" /></div><div class="cell p10 p7 p9" data-x="10" data-y="7" data-z="9"><input maxlength="1" /></div><div class="cell p11 p7 p10" data-x="11" data-y="7" data-z="10"><input maxlength="1" /></div><div class="cell p12 p7 p11" data-x="12" data-y="7" data-z="11"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p8">
+                <div class="cell p2 p8 p0" data-x="2" data-y="8" data-z="0"><input maxlength="1" /></div><div class="cell p3 p8 p1" data-x="3" data-y="8" data-z="1"><input maxlength="1" /></div><div class="cell p4 p8 p2" data-x="4" data-y="8" data-z="2"><input maxlength="1" /></div><div class="cell p5 p8 p3" data-x="5" data-y="8" data-z="3"><input maxlength="1" /></div><div class="cell p6 p8 p4" data-x="6" data-y="8" data-z="4"><input maxlength="1" /></div><div class="cell p7 p8 p5" data-x="7" data-y="8" data-z="5"><input maxlength="1" /></div><div class="cell p8 p6" data-x="8" data-y="8" data-z="6"><input maxlength="1" /></div><div class="cell p9 p8 p7" data-x="9" data-y="8" data-z="7"><input maxlength="1" /></div><div class="cell p10 p8" data-x="10" data-y="8" data-z="8"><input maxlength="1" /></div><div class="cell p11 p8 p9" data-x="11" data-y="8" data-z="9"><input maxlength="1" /></div><div class="cell p12 p8 p10" data-x="12" data-y="8" data-z="10"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p9">
+                <div class="cell p3 p9 p0" data-x="3" data-y="9" data-z="0"><input maxlength="1" /></div><div class="cell p4 p9 p1" data-x="4" data-y="9" data-z="1"><input maxlength="1" /></div><div class="cell p5 p9 p2" data-x="5" data-y="9" data-z="2"><input maxlength="1" /></div><div class="cell p6 p9 p3" data-x="6" data-y="9" data-z="3"><input maxlength="1" /></div><div class="cell p7 p9 p4" data-x="7" data-y="9" data-z="4"><input maxlength="1" /></div><div class="cell p8 p9 p5" data-x="8" data-y="9" data-z="5"><input maxlength="1" /></div><div class="cell p9 p6" data-x="9" data-y="9" data-z="6"><input maxlength="1" /></div><div class="cell p10 p9 p7" data-x="10" data-y="9" data-z="7"><input maxlength="1" /></div><div class="cell p11 p9 p8" data-x="11" data-y="9" data-z="8"><input maxlength="1" /></div><div class="cell p12 p9" data-x="12" data-y="9" data-z="9"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p10">
+                <div class="cell p4 p10 p0" data-x="4" data-y="10" data-z="0"><input maxlength="1" /></div><div class="cell p5 p10 p1" data-x="5" data-y="10" data-z="1"><input maxlength="1" /></div><div class="cell p6 p10 p2" data-x="6" data-y="10" data-z="2"><input maxlength="1" /></div><div class="cell p7 p10 p3" data-x="7" data-y="10" data-z="3"><input maxlength="1" /></div><div class="cell p8 p10 p4" data-x="8" data-y="10" data-z="4"><input maxlength="1" /></div><div class="cell p9 p10 p5" data-x="9" data-y="10" data-z="5"><input maxlength="1" /></div><div class="cell p10 p6" data-x="10" data-y="10" data-z="6"><input maxlength="1" /></div><div class="cell p11 p10 p7" data-x="11" data-y="10" data-z="7"><input maxlength="1" /></div><div class="cell p12 p10 p8" data-x="12" data-y="10" data-z="8"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p11">
+                <div class="cell p5 p11 p0" data-x="5" data-y="11" data-z="0"><input maxlength="1" /></div><div class="cell p6 p11 p1" data-x="6" data-y="11" data-z="1"><input maxlength="1" /></div><div class="cell p7 p11 p2" data-x="7" data-y="11" data-z="2"><input maxlength="1" /></div><div class="cell p8 p11 p3" data-x="8" data-y="11" data-z="3"><input maxlength="1" /></div><div class="cell p9 p11 p4" data-x="9" data-y="11" data-z="4"><input maxlength="1" /></div><div class="cell p10 p11 p5" data-x="10" data-y="11" data-z="5"><input maxlength="1" /></div><div class="cell p11 p6" data-x="11" data-y="11" data-z="6"><input maxlength="1" /></div><div class="cell p12 p11 p7" data-x="12" data-y="11" data-z="7"><input maxlength="1" /></div><br />
+            </div>
+            <div class="line p12">
+                <div class="cell p6 p12 p0" data-x="6" data-y="12" data-z="0"><input maxlength="1" /></div><div class="cell p7 p12 p1" data-x="7" data-y="12" data-z="1"><input maxlength="1" /></div><div class="cell p8 p12 p2" data-x="8" data-y="12" data-z="2"><input maxlength="1" /></div><div class="cell p9 p12 p3" data-x="9" data-y="12" data-z="3"><input maxlength="1" /></div><div class="cell p10 p12 p4" data-x="10" data-y="12" data-z="4"><input maxlength="1" /></div><div class="cell p11 p12 p5" data-x="11" data-y="12" data-z="5"><input maxlength="1" /></div><div class="cell p12 p6" data-x="12" data-y="12" data-z="6"><input maxlength="1" /></div>
+            </div>
+        </div>
+        <div class="zRules">
+            <div class="rule rule0 p0"><%- rule %></div>
+            <div class="rule rule1 p1"><%- rule %></div>
+            <div class="rule rule2 p2"><%- rule %></div>
+            <div class="rule rule3 p3"><%- rule %></div>
+            <div class="rule rule4 p4"><%- rule %></div>
+            <div class="rule rule5 p5"><%- rule %></div>
+            <div class="rule rule6 p6"><%- rule %></div>
+            <div class="rule rule7 p7"><%- rule %></div>
+            <div class="rule rule8 p8"><%- rule %></div>
+            <div class="rule rule9 p9"><%- rule %></div>
+            <div class="rule rule10 p10"><%- rule %></div>
+            <div class="rule rule11 p11"><%- rule %></div>
+            <div class="rule rule12 p12"><%- rule %></div>
+        </div>
+    </div>
+    <% if (right) { %> <a class="nav right" href="<%= right.href %>"></a> <% } %>
+    <% if (!solve) { %><button id="save">SAVE</button><% } %>
+</body>
+</html>

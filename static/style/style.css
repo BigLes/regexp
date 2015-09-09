@@ -1,0 +1,378 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+[disabled="true"] {
+    display: none !important;
+}
+
+.range {
+    display: block;
+    width: 175px;
+    margin: 0 auto;
+}
+
+.puzzle {
+    margin: 0 auto;
+}
+
+.puzzle[data-type="7"] {
+    width: 780px;
+}
+
+.puzzle[data-type="6"] {
+    width: 700px;
+}
+
+.puzzle[data-type="5"] {
+    width: 620px;
+}
+
+.puzzle[data-type="4"] {
+    width: 540px;
+}
+
+.puzzle[data-type="3"] {
+    width: 460px;
+}
+
+.puzzle[data-type="2"] {
+    width: 380px;
+}
+
+.puzzle[data-type="1"] {
+    width: 300px;
+}
+
+.puzzle[data-type="7"] .hex {
+    width: 520px;
+}
+
+.puzzle[data-type="6"] .hex {
+    width: 440px;
+}
+
+.puzzle[data-type="5"] .hex {
+    width: 360px;
+}
+
+.puzzle[data-type="4"] .hex {
+    width: 280px;
+}
+
+.puzzle[data-type="3"] .hex {
+    width: 200px;
+}
+
+.puzzle[data-type="2"] .hex {
+    width: 120px;
+}
+
+.puzzle[data-type="1"] .hex {
+    width: 40px;
+}
+
+.cell {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 46px;
+    width: 40px;
+    background-image: url("../pictures/spritesheet.png");
+    background-repeat: no-repeat;
+    background-position: -55px -5px;
+    padding: 5px 5px 9px 5px;
+    overflow: hidden;
+}
+
+.cell.active {
+    background-position: -5px -5px;
+}
+
+.cell input {
+    height: 32px;
+    width: 30px;
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    background: transparent;
+    border: 0;
+    outline: 0;
+}
+
+.rule span {
+    font-family: monospace;
+}
+
+.line.p0, .line.p12 {
+    margin-left: 120px;
+}
+
+.line.p1, .line.p11 {
+    margin-left: 100px;
+}
+
+.line.p2, .line.p10 {
+    margin-left: 80px;
+}
+
+.line.p3, .line.p9 {
+    margin-left: 60px;
+}
+
+.line.p4, .line.p8 {
+    margin-left: 40px;
+}
+
+.line.p5, .line.p7 {
+    margin-left: 20px;
+}
+
+.line {
+    margin-top: -16px;
+    display: inline-block;
+}
+
+.hex {
+    float: left;
+    padding-top: 16px;
+}
+
+.rule.active input, .rule.active span {
+    text-shadow: #2a61ff 0 0 4px;
+}
+
+.rule.good input, .rule.good span {
+    color: #00ab00;
+    text-shadow: #00ab00 0 0 6px;
+}
+
+.rule.bad input, .rule.bad span {
+    color: #fd0000;
+    text-shadow: #fd0000 0 0 6px;
+}
+
+.xRules .rule {
+    display: inline-block;
+    position: relative;
+    bottom: -173px;
+    width: 14px;
+    height: 25px;
+    margin-right: 22px;
+}
+
+.xRules .rule input, .xRules .rule span {
+    width: 185px;
+    height: 15px;
+    display: inline-block;
+    transform: rotateZ(-60deg);
+    transform-origin: top left;
+    -webkit-transform: rotateZ(-60deg);
+    -webkit-transform-origin: top left;
+}
+
+.xRules .rule input {
+    width: 169px;
+}
+
+.zRules, .xRules {
+    display: inline-block;
+}
+
+[data-type="7"] .zRules, [data-type="7"] .xRules {
+    margin-left: 320px;
+}
+
+[data-type="6"] .zRules, [data-type="6"] .xRules {
+    margin-left: 300px;
+}
+
+[data-type="5"] .zRules, [data-type="5"] .xRules {
+    margin-left: 280px;
+}
+
+[data-type="4"] .zRules, [data-type="4"] .xRules {
+    margin-left: 260px;
+}
+
+[data-type="3"] .zRules, [data-type="3"] .xRules {
+    margin-left: 240px;
+}
+
+[data-type="2"] .zRules, [data-type="2"] .xRules {
+    margin-left: 220px;
+}
+
+[data-type="1"] .zRules, [data-type="1"] .xRules {
+    margin-left: 200px;
+}
+
+.xRules {
+    position: relative;
+    height: 175px;
+}
+
+.xRules .rule7 {
+    bottom: -207px;
+}
+
+.xRules .rule8 {
+    bottom: -240px;
+}
+
+.xRules .rule9 {
+    bottom: -274px;
+}
+
+.xRules .rule10 {
+    bottom: -309px;
+}
+
+.xRules .rule11 {
+    bottom: -343px;
+}
+
+.xRules .rule12 {
+    bottom: -377px;
+}
+
+.xRules .rule:nth-child(n+7), .zRules .rule:nth-child(n+7) {
+    margin-right: 2px;
+}
+
+.yRules {
+    width: 175px;
+    float: left;
+    position: relative;
+    padding-top: 14px;
+}
+
+.yRules .rule {
+    position: relative;
+    margin-bottom: 15px;
+    height: 19px;
+}
+
+.yRules .rule input, .yRules .rule span {
+    width: 169px;
+    height: 15px;
+    display: inline-block;
+    text-align: right;
+}
+
+.yRules .rule span {
+    margin-left: 3px;
+}
+
+.yRules .rule0, .yRules .rule12 {
+    right: -119px;
+}
+
+.yRules .rule1, .yRules .rule11 {
+    right: -99px;
+}
+
+.yRules .rule2, .yRules .rule10 {
+    right: -79px;
+}
+
+.yRules .rule3, .yRules .rule9 {
+    right: -59px;
+}
+
+.yRules .rule4, .yRules .rule8 {
+    right: -39px;
+}
+
+.yRules .rule5, .yRules .rule7 {
+    right: -19px;
+}
+
+.zRules {
+    clear: left;
+    position: relative;
+    height: 175px;
+}
+
+.zRules .rule {
+    display: inline-block;
+    position: relative;
+    top: -20px;
+    width: 14px;
+    height: 25px;
+    margin-right: 22px;
+}
+
+.zRules .rule input, .zRules .rule span {
+    width: 185px;
+    height: 15px;
+    display: inline-block;
+    transform: rotateZ(60deg);
+    transform-origin: bottom left;
+    -webkit-transform: rotateZ(60deg);
+    -webkit-transform-origin: bottom left;
+}
+.zRules .rule input {
+    width: 169px;
+}
+
+.zRules .rule span {
+    margin-top: 2px;
+    margin-left: 1px;
+}
+
+.zRules .rule7 {
+    top: -54px;
+}
+
+.zRules .rule8 {
+    top: -88px;
+}
+
+.zRules .rule9 {
+    top: -122px;
+}
+
+.zRules .rule10 {
+    top: -156px;
+}
+
+.zRules .rule11 {
+    top: -190px;
+}
+
+.zRules .rule12 {
+    top: -224px;
+}
+
+button {
+    display: block;
+    width: 300px;
+    height: 70px;
+    background-color: #ffffff;
+    border: 1px solid #dfdfdf;
+    color: #949494;
+    outline: 0;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.nav {
+    display: block;
+    height: 100%;
+    width: 70px;
+    position: absolute;
+    top: 0;
+    background-repeat: no-repeat;
+    background-position: 15px;
+}
+
+.right {
+    right: 0;
+    background-image: url("../pictures/right.png");
+}
+
+.left {
+    left: 0;
+    background-image: url("../pictures/left.png");
+}
