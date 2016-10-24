@@ -1,5 +1,3 @@
-#!/bin/env node
-//  OpenShift sample Node application
 var express = require('express');
 var DB      = require('./utils/database');
 var fs      = require('fs');
@@ -20,7 +18,7 @@ var App = function() {
      */
     self.populateCache = function() {
         self.cache = {};
-        self.cache['index'] = fs.readFileSync('./static/html/index.html');
+        self.cache['index'] = fs.readFileSync('./regexp/static/html/index.html');
         self.cache['empty_puzzle'] = JSON.stringify(puzzle.getEmptyPuzzle());
         db.findAll(puzzle.getMongooseModel(), {}, function (err, data) {
             self.cache['ids'] = data.filter(function (item) {
@@ -36,31 +34,6 @@ var App = function() {
         }
     };
 
-    /**
-     *  terminator === the termination handler
-     *  Terminate server on receipt of the specified signal.
-     *  @param {string|boolean} sig  Signal to terminate on.
-     */
-    self.terminator = function (sig){
-        if (typeof sig === "string") {
-           console.log('%s: Received %s - terminating sample app ...', Date(Date.now()), sig);
-           process.exit(1);
-        }
-        console.log('%s: Node server stopped.', Date(Date.now()) );
-    };
-
-    /**
-     *  Setup termination handlers (for exit and a list of signals).
-     */
-    self.setupTerminationHandlers = function() {
-        var sigs = ['SIGHUP', 'SIGINT', 'SIGQUIT', 'SIGILL', 'SIGTRAP', 'SIGABRT', 'SIGBUS', 'SIGFPE', 'SIGUSR1', 'SIGSEGV', 'SIGUSR2', 'SIGTERM'];
-        process.on('exit', function() {self.terminator(false);});
-
-        sigs.forEach(function(element) {
-            process.on(element, function() {self.terminator(element);});
-        });
-    };
-
     /*  ================================================================  */
     /*  App server functions (main app logic here).                       */
     /*  ================================================================  */
@@ -72,11 +45,11 @@ var App = function() {
         self.postRoutes = {};
         self.staticRoutes = {};
 
-        self.getRoutes['/'] = function(req, res) {
+        self.getRoutes['regexp'] = function(req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache.get('index'));
         };
-        self.getRoutes['/create'] = function(req, res) {
+        self.getRoutes['regexp/create'] = function(req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.render('puzzle', {
                 script: self.cache.get('empty_puzzle'),
@@ -87,7 +60,7 @@ var App = function() {
                 type: 7
             });
         };
-        self.getRoutes['/solve'] = function(req, res) {
+        self.getRoutes['regexp/solve'] = function(req, res) {
             var puzzle = new Puzzle(),
                 query = {},
                 ids = self.cache.get('ids'),
@@ -131,7 +104,7 @@ var App = function() {
                 }
             });
         };
-        self.postRoutes['/save'] = function(req, res) {
+        self.postRoutes['api/regexp/save'] = function(req, res) {
             var toSave = {};
             if (req.body.data) {
                 toSave = JSON.parse(req.body.data);
@@ -146,18 +119,18 @@ var App = function() {
             }
         };
 
-        self.staticRoutes["/style"] = "/static/style";
-        self.staticRoutes["/script"] = "/static/script";
-        self.staticRoutes["/pictures"] = "/static/pictures";
+        self.staticRoutes["/style"] = "./regexp/static/style";
+        self.staticRoutes["/script"] = "./regexp/static/script";
+        self.staticRoutes["/pictures"] = "./regexp/static/pictures";
     };
 
     /**
      *  Initialize the server (express) and create the routes and register
      *  the handlers.
      */
-    self.initializeServer = function() {
+    self.initializeServer = function(server) {
         var r;
-        self.app = express();
+        self.app = server;
         self.createRoutes();
         self.setupMiddleWare();
 
@@ -178,12 +151,6 @@ var App = function() {
      *  Setup middleware of application
      */
     self.setupMiddleWare = function () {
-        function allowCrossDomain(req, res, next) {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            res.header('Access-Control-Allow-Headers', 'Content-Type');
-            next();
-        }
         function ieRedirecter(req, res, next) {
             if(req.headers['user-agent'].indexOf("MSIE") >= 0) {
                 var myNav = req.headers['user-agent'];
@@ -199,9 +166,6 @@ var App = function() {
                 next();
             }
         }
-        if (self.develop) {
-            self.app.use(allowCrossDomain);
-        }
         self.app.use(express.static("static"));
         self.app.set('view engine', 'ejs');
         self.app.use(ieRedirecter);
@@ -210,14 +174,13 @@ var App = function() {
     /**
      *  Initializes the sample application.
      */
-    self.initialize = function() {
+    self.initialize = function(server) {
         self.populateCache();
-        self.setupTerminationHandlers();
-        self.initializeServer();
+        self.initializeServer(server);
     };
 };
 
 module.exports = function (server) {
     var app = new App();
-    app.initialize();
+    app.initialize(server);
 };
