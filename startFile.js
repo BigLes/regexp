@@ -23,10 +23,10 @@ var App = function() {
         self.port      = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
         if (typeof self.ipaddress === "undefined") {
-            console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1:5000');
+            console.warn('No OPENSHIFT_NODEJS_IP var, using 127.0.0.1:1337');
             self.develop = true;
             self.ipaddress = "127.0.0.1";
-            self.port = 5000;
+            self.port = 1337;
         }
     };
 
@@ -37,7 +37,7 @@ var App = function() {
         self.cache = {};
         self.cache['index'] = fs.readFileSync('./static/html/index.html');
         self.cache['empty_puzzle'] = JSON.stringify(puzzle.getEmptyPuzzle());
-        db.findAll(puzzle.getMongooseModel(), {}, function (err, data) {
+        db.findAll(function (err, data) {
             self.cache['ids'] = data.filter(function (item) {
                 if (item.time) {
                     return item;
@@ -129,8 +129,10 @@ var App = function() {
                     }
                 }
             }
-            db.find(puzzle.getMongooseModel(), query, function (err, data) {
+            console.log(ids);
+            db.find(query, function (err, data) {
                 if (data) {
+                    console.log(data);
                     res.render('puzzle', {
                         script: JSON.stringify(data),
                         rule: "<span></span>",
@@ -146,12 +148,12 @@ var App = function() {
                 }
             });
         };
-        self.postRoutes['/save'] = function(req, res) {
+        self.postRoutes['/api/puzzle'] = function(req, res) {
             var toSave = {};
             if (req.body.data) {
                 toSave = JSON.parse(req.body.data);
                 toSave.time = (new Date()).getTime();
-                db.save(puzzle.getMongooseModel(), toSave, function (err, message, doc) {
+                db.save(toSave, function (err, message, doc) {
                     self.cache['ids'].push(toSave.time);
                     res.setHeader('Content-Type', 'text/html');
                     if (err) {} else {

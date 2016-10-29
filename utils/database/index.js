@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose  = require('mongoose');
+var Sequelize = require('sequelize');
+var Models    = require('./models');
 
 module.exports = function() {
     var mongoConnection;
@@ -12,8 +14,11 @@ module.exports = function() {
         mongoConnection = "mongodb://localhost:27017/puzzles";
     }
 
+    var sequelize = new Sequelize('mysql://root:root@localhost:3306/regexp');
+    var models = new Models(sequelize);
+
     return {
-        save: function (model, query, callback) {
+        saveMongoose: function (model, query, callback) {
             var item = new model(query);
             mongoose.connect(mongoConnection);
             item.save(function (err, doc) {
@@ -26,19 +31,43 @@ module.exports = function() {
                 }
             });
         },
-        find: function (model, query, callback) {
+        findMongoose: function (model, query, callback) {
             mongoose.connect(mongoConnection);
             model.findOne(query, {_id: 0, __v: 0, strings: 0}, function (err, doc) {
                 mongoose.connection.close();
                 callback(err, doc);
             })
         },
-        findAll: function (model, query, callback) {
+        findAllMongoose: function (model, query, callback) {
             mongoose.connect(mongoConnection);
             model.find(query, {_id: 0, count: 0, strings: 0, rules: 0, __v: 0}, function (err, doc) {
                 mongoose.connection.close();
                 callback(err, doc);
             })
+        },
+        save: function (query, callback) {
+            console.log(query);
+            return models.puzzle.create(query)
+                .then(function (record) {callback(null, "Saved", record)})
+                .catch(function (error) {callback(error, "Not saved")});
+        },
+        find: function (query, callback) {
+            return models.puzzle.findOne(query).then(function (record) {
+                if (record) {
+                    callback(null, record.dataValues);
+                } else {
+                    callback('Not found');
+                }
+            });
+        },
+        findAll: function (callback) {
+            return models.puzzle.findAll({}).then(function (records) {
+                if (records.length) {
+                    callback(null, records);
+                } else {
+                    callback('Not found');
+                }
+            });
         }
     }
 };

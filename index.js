@@ -101,7 +101,6 @@ var App = function() {
             });
         });
         self.app.post('/regexp/api/puzzle', urlencodedParser, function(req, res) {
-            console.log('AAAAAAAAAAAAAAAAAAAAAAA');
             var toSave = {};
             if (req.body.data) {
                 toSave = JSON.parse(req.body.data);

@@ -235,7 +235,7 @@
                 }
             }
         };
-        request.open('POST', baseUrl + "regexp/api/puzzle", true);
+        request.open('POST', baseUrl + (baseUrl === "http://127.0.0.1:1337/" ? "api/puzzle" : "regexp/api/puzzle"), true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         request.send("data=" + JSON.stringify(data));
     }
