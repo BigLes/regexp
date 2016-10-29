@@ -129,10 +129,8 @@ var App = function() {
                     }
                 }
             }
-            console.log(ids);
             db.find(query, function (err, data) {
                 if (data) {
-                    console.log(data);
                     res.render('puzzle', {
                         script: JSON.stringify(data),
                         rule: "<span></span>",

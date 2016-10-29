@@ -1,5 +1,12 @@
 (function () {
     "use strict";
+
+    console.log(P);
+
+    P.rules = P.rules.substr ? JSON.parse(P.rules) : P.rules;
+
+    console.log(P);
+
     var lines = {x: [], y: [], z: []},
         rules = {x: P.rules.x, y: P.rules.y, z: P.rules.z},
         strings = {x: [], y: [], z: []},
