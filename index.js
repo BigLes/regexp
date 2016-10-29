@@ -41,15 +41,11 @@ var App = function() {
      *  Create the routing table entries + handlers for the application.
      */
     self.createRoutes = function() {
-        self.getRoutes = {};
-        self.postRoutes = {};
-        self.staticRoutes = {};
-
-        self.getRoutes['regexp'] = function(req, res) {
+        self.app.get('/regexp', function(req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache.get('index'));
-        };
-        self.getRoutes['regexp/create'] = function(req, res) {
+        });
+        self.app.get('/regexp/create', function(req, res) {
             res.setHeader('Content-Type', 'text/html');
             res.render('puzzle', {
                 script: self.cache.get('empty_puzzle'),
@@ -59,8 +55,8 @@ var App = function() {
                 right: false,
                 type: 7
             });
-        };
-        self.getRoutes['regexp/solve'] = function(req, res) {
+        });
+        self.app.get('/regexp/solve', function(req, res) {
             var puzzle = new Puzzle(),
                 query = {},
                 ids = self.cache.get('ids'),
@@ -103,8 +99,9 @@ var App = function() {
                     });
                 }
             });
-        };
-        self.postRoutes['api/regexp/save'] = function(req, res) {
+        });
+        self.app.post('/regexp/api/puzzle', urlencodedParser, function(req, res) {
+            console.log('AAAAAAAAAAAAAAAAAAAAAAA');
             var toSave = {};
             if (req.body.data) {
                 toSave = JSON.parse(req.body.data);
@@ -117,11 +114,7 @@ var App = function() {
                     }
                 });
             }
-        };
-
-        self.staticRoutes["/style"] = "./regexp/static/style";
-        self.staticRoutes["/script"] = "./regexp/static/script";
-        self.staticRoutes["/pictures"] = "./regexp/static/pictures";
+        });
     };
 
     /**
@@ -129,22 +122,9 @@ var App = function() {
      *  the handlers.
      */
     self.initializeServer = function(server) {
-        var r;
         self.app = server;
-        self.createRoutes();
         self.setupMiddleWare();
-
-        for (r in self.getRoutes) {
-            self.app.get(r, self.getRoutes[r]);
-        }
-        for (r in self.postRoutes) {
-            self.app.post(r, urlencodedParser, self.postRoutes[r]);
-        }
-        self.app.get("*", function (req, res) {
-            res.render('error', {
-                error: "error 404: page not found"
-            });
-        })
+        self.createRoutes();
     };
 
     /**
@@ -166,7 +146,8 @@ var App = function() {
                 next();
             }
         }
-        self.app.use(express.static("static"));
+        self.app.use(express.static("regexp/static"));
+        self.app.set('views', 'regexp/views');
         self.app.set('view engine', 'ejs');
         self.app.use(ieRedirecter);
     };

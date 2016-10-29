@@ -235,7 +235,7 @@
                 }
             }
         };
-        request.open('POST', baseUrl + "save", true);
+        request.open('POST', baseUrl + "regexp/api/puzzle", true);
         request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         request.send("data=" + JSON.stringify(data));
     }
@@ -251,7 +251,7 @@
                 var id = message.indexOf("/") >= 0 ? message.split("/")[1] : undefined;
                 if (id) {
                     alert("Saved");
-                    window.location = baseUrl + "solve?id=" + id;
+                    window.location = baseUrl + "regexp/solve?id=" + id;
                 } else {
                     alert(message);
                 }
@@ -261,10 +261,10 @@
         }
     }
 
-    if (window.location.href === "http://regexp-lissmall.rhcloud.com/") {
-        baseUrl = 'http://regexp-lissmall.rhcloud.com/';
+    if (window.location.href === "http://lisovyk-oleksandr.azurewebsites.net/regexp/create") {
+        baseUrl = 'http://lisovyk-oleksandr.azurewebsites.net/';
     } else {
-        baseUrl = 'http://localhost:5000/';
+        baseUrl = 'http://127.0.0.1:1337/';
     }
 
     RegExp.prototype.toJSON = RegExp.prototype.toString;
