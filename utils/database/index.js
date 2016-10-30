@@ -4,6 +4,7 @@ var Models    = require('./models');
 
 module.exports = function() {
     var mongoConnection;
+    var connectionString;
     if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
         mongoConnection = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
         process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -14,7 +15,20 @@ module.exports = function() {
         mongoConnection = "mongodb://localhost:27017/puzzles";
     }
 
-    var sequelize = new Sequelize(process.env.MYSQLCONNSTR_localdb ? process.env.MYSQLCONNSTR_localdb : 'mysql://root:root@localhost:3306/regexp');
+    if (process.env.MYSQLCONNSTR_localdb) {
+        process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) => {
+            var string = item.split("=");
+            if (string[0] === "Password") {
+                connectionString = "mysql://azure:" + string[1] + "@127.0.0.1:54454/regexp";
+            }
+        })
+    } else {
+        connectionString = "mysql://root:root@localhost:3306/regexp";
+    }
+
+    console.log(connectionString);
+
+    var sequelize = new Sequelize(connectionString);
     var models = new Models(sequelize);
 
     return {
