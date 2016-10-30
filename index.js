@@ -20,7 +20,7 @@ var App = function() {
         self.cache = {};
         self.cache['index'] = fs.readFileSync('./regexp/static/html/index.html');
         self.cache['empty_puzzle'] = JSON.stringify(puzzle.getEmptyPuzzle());
-        db.findAll(puzzle.getMongooseModel(), {}, function (err, data) {
+        db.findAll(function (err, data) {
             self.cache['ids'] = data.filter(function (item) {
                 if (item.time) {
                     return item;
@@ -83,7 +83,7 @@ var App = function() {
                     }
                 }
             }
-            db.find(puzzle.getMongooseModel(), query, function (err, data) {
+            db.find(query, function (err, data) {
                 if (data) {
                     res.render('puzzle', {
                         script: JSON.stringify(data),
@@ -105,7 +105,7 @@ var App = function() {
             if (req.body.data) {
                 toSave = JSON.parse(req.body.data);
                 toSave.time = (new Date()).getTime();
-                db.save(puzzle.getMongooseModel(), toSave, function (err, message, doc) {
+                db.save(toSave, function (err, message, doc) {
                     self.cache['ids'].push(toSave.time);
                     res.setHeader('Content-Type', 'text/html');
                     if (err) {} else {

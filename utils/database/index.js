@@ -14,7 +14,7 @@ module.exports = function() {
         mongoConnection = "mongodb://localhost:27017/puzzles";
     }
 
-    var sequelize = new Sequelize('mysql://root:root@localhost:3306/regexp');
+    var sequelize = new Sequelize(process.env.MYSQLCONNSTR_localdb ? MYSQLCONNSTR_localdb : 'mysql://root:root@localhost:3306/regexp');
     var models = new Models(sequelize);
 
     return {
