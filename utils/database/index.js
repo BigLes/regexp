@@ -16,7 +16,7 @@ module.exports = function() {
     }
 
     if (process.env.MYSQLCONNSTR_localdb) {
-        process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) => {
+        process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
             var string = item.split("=");
             if (string[0] === "Password") {
                 connectionString = "mysql://azure:" + string[1] + "@127.0.0.1:54454/regexp";
