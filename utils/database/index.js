@@ -46,13 +46,12 @@ module.exports = function() {
             })
         },
         save: function (query, callback) {
-            console.log(query);
             return models.puzzle.create(query)
                 .then(function (record) {callback(null, "Saved", record)})
                 .catch(function (error) {callback(error, "Not saved")});
         },
         find: function (query, callback) {
-            return models.puzzle.findOne(query).then(function (record) {
+            return models.puzzle.findOne({where: query}).then(function (record) {
                 if (record) {
                     callback(null, record.dataValues);
                 } else {
