@@ -145,6 +145,12 @@ var App = function() {
                 next();
             }
         }
+        self.app.use(function allowCrossDomain(req, res, next) {
+            res.header('Access-Control-Allow-Origin', '*');
+            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
         self.app.use(express.static("regexp/static"));
         self.app.set('views', 'regexp/views');
         self.app.set('view engine', 'ejs');
