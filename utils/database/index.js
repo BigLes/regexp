@@ -8,7 +8,7 @@ module.exports = function() {
         process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
             var string = item.split("=");
             if (string[0] === "Password") {
-                sequelize = new Sequelize('localdb', 'azure', '6#vWHD_$', {
+                sequelize = new Sequelize('localdb', 'azure', '65vWHD_$', {
                     host: 'localhost',
                     dialect: 'mysql',
                     pool: {
