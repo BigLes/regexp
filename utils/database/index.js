@@ -9,7 +9,7 @@ module.exports = function() {
             var string = item.split("=");
             if (string[0] === "Password") {
                 console.log('Password |' + string[1] + '|');
-                sequelize = new Sequelize('localdb', 'azure', string[0], {
+                sequelize = new Sequelize('localdb', 'azure', string[1], {
                     host: 'localhost',
                     dialect: 'mysql',
                     port: 54454
