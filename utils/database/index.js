@@ -2,24 +2,20 @@ var Sequelize = require('sequelize');
 var Models    = require('./models');
 
 module.exports = function() {
-    var connectionString;
+    var connectionString = "mysql://root:root@localhost:3306/regexp";
 
     if (process.env.MYSQLCONNSTR_localdb) {
         process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
             var string = item.split("=");
             if (string[0] === "Password") {
-                connectionString = "mysql://root:root@localhost:54454/localdb";
+                connectionString = "mysql://azure:" + string[1] + "@localhost:54454/localdb";
             }
         })
-    } else {
-        connectionString = "mysql://root:root@localhost:3306/regexp";
     }
 
     console.log(connectionString);
 
     var sequelize = new Sequelize(connectionString);
-
-    sequelize.authenticate().then(function (result) {console.log('RESULT ' + result)});
 
     var models = new Models(sequelize);
 
