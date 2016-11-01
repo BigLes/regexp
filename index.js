@@ -130,12 +130,6 @@ var App = function() {
      *  Setup middleware of application
      */
     self.setupMiddleWare = function () {
-        function allowCrossDomain(req, res, next) {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-            res.header('Access-Control-Allow-Headers', 'Content-Type');
-            next();
-        }
         function ieRedirecter(req, res, next) {
             if(req.headers['user-agent'].indexOf("MSIE") >= 0) {
                 var myNav = req.headers['user-agent'];
@@ -155,7 +149,6 @@ var App = function() {
         self.app.set('views', 'regexp/views');
         self.app.set('view engine', 'ejs');
         self.app.use(ieRedirecter);
-        self.app.use(allowCrossDomain);
     };
 
     /**
