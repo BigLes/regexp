@@ -264,10 +264,10 @@
         }
     }
 
-    if (window.location.href === "http://lisovyk-oleksandr.azurewebsites.net/regexp/create") {
-        baseUrl = 'http://lisovyk-oleksandr.azurewebsites.net/';
-    } else {
+    if (window.location.href.indexOf("http://127.0.0.1:1337") >= 0) {
         baseUrl = 'http://127.0.0.1:1337/';
+    } else {
+        baseUrl = 'http://lisovyk-oleksandr.azurewebsites.net/';
     }
 
     RegExp.prototype.toJSON = RegExp.prototype.toString;
