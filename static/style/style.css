@@ -376,3 +376,11 @@ button {
     left: 0;
     background-image: url("../pictures/left.png");
 }
+
+a {
+    text-decoration: none;
+}
+
+#save {
+    margin-bottom: 10px;
+}
