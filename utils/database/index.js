@@ -5,22 +5,16 @@ module.exports = function() {
     var sequelize;
 
     if (process.env.MYSQLCONNSTR_localdb) {
-        // process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
-        //     var string = item.split("=");
-        //     if (string[0] === "Password") {
-        //         sequelize = new Sequelize('localdb', 'azure', '65vWHD_$', {
-        //             host: 'localhost',
-        //             dialect: 'mysql',
-        //             pool: {
-        //                 max: 5,
-        //                 min: 0,
-        //                 idle: 10000
-        //             }
-        //         });
-        //     }
-        // })
-        sequelize = new Sequelize("mysql://azure:65vWHD_$@localhost:54454/localdb");
-        sequelize.query("SET PASSWORD FOR 'azure'@'localhost' = PASSWORD('6#vWHD_$')");
+        process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
+            var string = item.split("=");
+            if (string[0] === "Password") {
+                sequelize = new Sequelize('localdb', 'azure', string[0], {
+                    host: 'localhost',
+                    dialect: 'mysql',
+                    port: 54454
+                });
+            }
+        });
     } else {
         sequelize = new Sequelize("mysql://root:root@localhost:3306/regexp");
     }
