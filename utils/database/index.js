@@ -29,6 +29,9 @@ module.exports = function() {
     console.log(connectionString);
 
     var sequelize = new Sequelize(connectionString);
+
+    sequelize.authenticate().then(function(errors) { console.log('ERROR!' + errors) });
+
     var models = new Models(sequelize);
 
     return {
