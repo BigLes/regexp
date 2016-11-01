@@ -20,6 +20,7 @@ module.exports = function() {
         //     }
         // })
         sequelize = new Sequelize("mysql://azure:65vWHD_$@localhost:54454/localdb");
+        sequelize.query("SET PASSWORD FOR 'azure'@'localhost' = PASSWORD('6#vWHD_$')");
     } else {
         sequelize = new Sequelize("mysql://root:root@localhost:3306/regexp");
     }
