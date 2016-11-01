@@ -15,6 +15,8 @@ module.exports = function() {
 
     console.log(connectionString);
 
+    console.log(connectionString);
+
     var sequelize = new Sequelize(connectionString);
 
     var models = new Models(sequelize);
