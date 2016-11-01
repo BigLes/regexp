@@ -8,7 +8,7 @@ module.exports = function() {
         process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
             var string = item.split("=");
             if (string[0] === "Password") {
-                connectionString = "mysql://azure:\"" + string[1] + "\"@localhost:54454/localdb";
+                connectionString = "mysql://root:root@localhost:54454/localdb";
             }
         })
     } else {
