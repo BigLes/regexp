@@ -21,7 +21,7 @@ var App = function() {
         self.cache['index'] = fs.readFileSync('./regexp/static/html/index.html');
         self.cache['empty_puzzle'] = JSON.stringify(puzzle.getEmptyPuzzle());
         db.findAll(function (err, data) {
-            self.cache['ids'] = !data.filter ? [] : data.filter(function (item) {
+            self.cache['ids'] = data ? [] : data.filter(function (item) {
                 if (item.time) {
                     return item;
                 }
