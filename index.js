@@ -149,6 +149,7 @@ var App = function() {
             res.header('Access-Control-Allow-Origin', '*');
             res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
             res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            console.log("inCORS2");
             next();
         });
         self.app.use(express.static("regexp/static"));
