@@ -304,7 +304,7 @@
 }
 
 .zRules .rule input, .zRules .rule span {
-    width: 185px;
+    width: 200px;
     height: 15px;
     display: inline-block;
     transform: rotateZ(60deg);
