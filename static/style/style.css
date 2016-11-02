@@ -304,13 +304,16 @@
 }
 
 .zRules .rule input, .zRules .rule span {
-    width: 200px;
+    width: 185px;
     height: 15px;
     display: inline-block;
     transform: rotateZ(60deg);
     transform-origin: bottom left;
     -webkit-transform: rotateZ(60deg);
     -webkit-transform-origin: bottom left;
+}
+.zRules .rule span {
+    width: 200px;
 }
 .zRules .rule input {
     width: 169px;
