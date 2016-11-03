@@ -4,6 +4,8 @@ var Models    = require('./models');
 module.exports = function() {
     var sequelize;
 
+    console.log(process.env.MYSQLCONNSTR_localdb);
+
     if (process.env.MYSQLCONNSTR_localdb) {
         process.env.MYSQLCONNSTR_localdb.split(";").forEach(function (item) {
             var string = item.split("=");
