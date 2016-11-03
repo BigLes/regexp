@@ -24,6 +24,12 @@ module.exports = function() {
 
     var models = new Models(sequelize);
 
+    models.puzzle.findOne({where: {id: 4}}).then(function (puzzle) {
+        console.log(puzzle);
+    });
+
+    models.puzzle.destroy({where: {id: 5}});
+
     return {
         save: function (query, callback) {
             return models.puzzle.create(query)
